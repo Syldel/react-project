@@ -7,27 +7,25 @@ cache:
 stages:
   - install
   - lint
+  - test
   - build
   - deploy
 
 install:
   stage: install
   script:
-    # install dependencies
     - yarn install
 
 lint:
   stage: lint
   needs: ["install"]
   script:
-    # Run eslint
     - yarn lint
 
 test:
-  stage: lint
+  stage: test
   needs: ["install"]
   script:
-    # Run eslint
     - yarn coverage
 
 build:
@@ -35,12 +33,11 @@ build:
   needs: ["test", "lint"]
   artifacts:
     paths:
-    - dist
+      - dist
   script:
-    # Run build
     - yarn build
 
-pages:
+deploy:
   stage: deploy
   needs: ["build"]
   when: manual
@@ -49,7 +46,7 @@ pages:
   artifacts:
     paths:
       - public
-  dependencies: 
+  dependencies:
     - build
   only:
     - main

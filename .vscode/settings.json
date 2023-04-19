@@ -1,0 +1,16 @@
+{
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "css",
+    "json",
+    "jsonc",
+    "markdown",
+    "scss"
+  ]
+}
