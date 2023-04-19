@@ -4,9 +4,7 @@
   "eslint.packageManager": "yarn",
   "eslint.format.enable": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.organizeImports": true,
-    "source.sortMembers": true
+    "source.fixAll.eslint": true
   },
   "eslint.validate": [
     "javascript",

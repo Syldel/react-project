@@ -6,7 +6,7 @@ module.exports = {
     'plugin:react/all',
     'plugin:react/jsx-runtime',
   ],
-  plugins: ['react'],
+  plugins: ['react', 'unused-imports'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -24,5 +24,6 @@ module.exports = {
     'react/jsx-closing-bracket-location': 'off',
     'react/jsx-closing-tag-location': 'off',
     'react/jsx-no-literals': 'off',
+    'unused-imports/no-unused-imports': 'error',
   },
 }
