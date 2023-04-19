@@ -10,8 +10,8 @@
     "preview": "vite --port 3333",
     "dev": "yarn run preview --open",
     "build": "vite build",
-    "lint": "npx eslint .",
-    "lint:fix": "npx eslint . --fix",
+    "lint": "yarn run eslint --resolve-plugins-relative-to .",
+    "lint:fix": "yarn run eslint . --fix",
     "test": "vitest --passWithNoTests",
     "coverage": "vitest run --coverage --passWithNoTests"
   },
