@@ -4,15 +4,29 @@ function Navbar() {
   return (
     <div className="navbar">
       <nav>
-        <Link to="/">
-          Trophées
+        <Link
+          className="text-blue-500 hover:underline"
+          to="/">
+          Dashboard
         </Link>
 
-        <Link to="login">
+        <span className="mx-2">
+          -
+        </span>
+
+        <Link
+          className="text-blue-500 hover:underline"
+          to="login">
           Connexion
         </Link>
 
-        <Link to="register">
+        <span className="mx-2">
+          -
+        </span>
+
+        <Link
+          className="text-blue-500 hover:underline"
+          to="register">
           Mon compte
         </Link>
       </nav>
