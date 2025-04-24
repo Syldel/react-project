@@ -1,28 +1,17 @@
-## Starterkit
+# React project
 
-### Gitlab Template
-
-[Create a repo from this template on Gitlab](https://gitlab.com/atecna-frontend/formations/starterkit/export).
+## Install
 
 ```bash
-cd your-project-name
+cd react-project
 npm install
 ```
-
-## Checklist
-
-When you use this template, try follow the checklist to update your info properly
-
-- [ ] Change the title in `index.html`
-- [ ] Remove tests in test directory and/or write your own
-
-And, enjoy :)
 
 ## Usage
 
 ### Development
 
-Just run and visit http://localhost:3000
+Just run and visit http://localhost:3333
 
 ```bash
 npm run dev
@@ -38,17 +27,58 @@ npm run build
 
 And you will see the generated file in `dist` that ready to be served.
 
-### Page
+## GitHub Pages
 
-Deploy manually your pages on pipeline succeed, then visit (replace with your repository path): https://atecna-frontend.gitlab.io/formations/starterkit
+## 🌐 Définir VITE_BASE_PATH sur GitHub
 
-## Wiki
+Pour que le chemin des assets fonctionne en production sur GitHub Pages :
 
-[Wiki](https://gitlab.com/atecna-frontend/formations/starterkit/-/wikis/home)
+1. Aller dans **Settings > Secrets and variables > Actions**.
+2. Onglet **Variables** → **New repository variable**
+3. Nom : `VITE_BASE_PATH`
+4. Valeur : `/react-project/`
 
-## Figma
+Ensuite, dans le fichier `.github/workflows/deploy.yml`, ajouter la variable au moment du build :
 
-- 🔧 Wireframe + User flow : [Voir le Fig Jam](https://www.figma.com/file/FSpJMub3WPbZILzmDPanfo/Atelier-Wireframe---Formation-front-end?node-id=0%3A1)
-- 🎉 UI kit (Logo/Styles/Icons/Typographie/Buttons/Components) : [Voir l'UI Kit](https://www.figma.com/file/uj1V4siWQmwfGuNuFDHvnb/Library---Formation?node-id=20%3A4107)
-- 🎨 Maquettes Def (Ecrans de l'application) : [Voir les Maquettes](https://www.figma.com/file/RnuECqTTyGvtItflD3TKVk/%5BWEB-SPORTIVE%5D-Front-end-starter?node-id=56%3A281)
-- 🎮 Prototype : [Voir le Prototype](https://www.figma.com/proto/RnuECqTTyGvtItflD3TKVk/%5BWEB-SPORTIVE%5D-Front-end-starter?page-id=56%3A248&node-id=201%3A1767&viewport=279%2C-3022%2C0.25&scaling=scale-down&starting-point-node-id=201%3A1767)
+```yaml
+- name: Build the app
+  run: npm run build
+  env:
+    VITE_BASE_PATH: ${{ vars.VITE_BASE_PATH }}
+```
+
+### 🔐 Autoriser GitHub Actions à déployer avec `GITHUB_TOKEN`
+
+Pour que l'action GitHub puisse **pousser vers la branche `gh-pages`**, il faut autoriser le `GITHUB_TOKEN` à écrire dans le dépôt.
+
+✅ Étapes à suivre
+
+1. Ouvrir le dépôt sur **GitHub**.
+2. Aller dans **Settings** → **Actions** → **General**.
+3. Faire défiler jusqu’à la section **"Workflow permissions"**.
+4. Sélectionner **"Read and write permissions"**.
+5. Cliquer sur **Save**.
+
+---
+
+### 💡 Pourquoi c’est nécessaire ?
+
+Par défaut, GitHub donne au `GITHUB_TOKEN` seulement les permissions en lecture.  
+Mais pour **déployer sur GitHub Pages**, l'action a besoin de **pousser le contenu du dossier `/build`** dans la branche `gh-pages`.
+
+Cette autorisation permet au bot `github-actions[bot]` de :
+
+- Créer ou mettre à jour la branche `gh-pages`
+- Déployer automatiquement à chaque push sur `main`
+
+---
+
+### 📦 Exemple d'utilisation
+
+```yaml
+- name: Deploy to GitHub Pages
+  uses: peaceiris/actions-gh-pages@v3
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    publish_dir: ./build
+```
