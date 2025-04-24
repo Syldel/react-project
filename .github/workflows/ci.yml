@@ -1,0 +1,47 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Set up environment variables
+      run: echo "VITE_BASE_PATH=${{ vars.VITE_BASE_PATH }}" >> $GITHUB_ENV
+
+    - name: Print vars.VITE_BASE_PATH
+      run: echo 'vars.VITE_BASE_PATH -> ${{ vars.VITE_BASE_PATH }}'
+
+    - name: Print VITE_BASE_PATH ENV
+      run: echo "VITE_BASE_PATH -> $VITE_BASE_PATH"
+
+    - name: Build
+      run: npm run build
+      env:
+        VITE_BASE_PATH: ${{ vars.VITE_BASE_PATH }}
+
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: dist
+        CLEAN: true
