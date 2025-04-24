@@ -16,10 +16,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install Dependencies
-        run: yarn
+        run: npm install
       - name: Lint
-        run: yarn lint
+        run: npm run lint
       - name: Test with coverage
-        run: yarn coverage
+        run: npm run coverage
       - name: Build
-        run: yarn build
+        run: npm run build

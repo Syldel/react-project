@@ -6,7 +6,7 @@
 
 ```bash
 cd your-project-name
-yarn install # If you don't have yarn installed, run: npm install -g yarn
+npm install
 ```
 
 ## Checklist
@@ -25,7 +25,7 @@ And, enjoy :)
 Just run and visit http://localhost:3000
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 ### Build
@@ -33,7 +33,7 @@ yarn dev
 To build the App, run
 
 ```bash
-yarn build
+npm run build
 ```
 
 And you will see the generated file in `dist` that ready to be served.

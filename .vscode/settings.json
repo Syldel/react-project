@@ -1,7 +1,6 @@
 {
   "prettier.enable": false,
   "eslint.enable": true,
-  "eslint.packageManager": "yarn",
   "eslint.format.enable": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true

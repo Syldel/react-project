@@ -14,19 +14,19 @@ stages:
 install:
   stage: install
   script:
-    - yarn install
+    - npm install
 
 lint:
   stage: lint
   needs: ["install"]
   script:
-    - yarn lint
+    - npm run lint
 
 test:
   stage: test
   needs: ["install"]
   script:
-    - yarn coverage
+    - npm run coverage
 
 build:
   stage: build
@@ -35,7 +35,7 @@ build:
     paths:
       - dist
   script:
-    - yarn build
+    - npm run build
 
 deploy:
   stage: deploy
