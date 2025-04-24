@@ -1,4 +1,4 @@
-name: Build and Test React Application
+name: Lint, Test and Build
  
 on: [push]
 
