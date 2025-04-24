@@ -25,6 +25,7 @@ module.exports = {
       allowFunctions: true,
       allowBind: false,
     }],
+    'react/forbid-component-props': 'off',
     'unused-imports/no-unused-imports': 'error',
   },
 }
