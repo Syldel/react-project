@@ -1,13 +1,16 @@
 import Navbar from './components/navbar'
-import logoBlack from './images/logo-black.svg'
+import reactLogo from './images/react-logo.svg'
 import { RouterElement } from './routes'
 
 function App() {
   return (<div className="bg-slate-100">
-    <img
-      alt="logo"
-      src={logoBlack}
-    />
+    <div className="text-[#58c4dc]">
+      <img
+        alt="react logo"
+        className="w-24 h-24 fill-current"
+        src={reactLogo}
+      />
+    </div>
 
     <Navbar />
 
