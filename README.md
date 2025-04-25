@@ -1,5 +1,7 @@
 # React project
 
+[![React Logo](src/images/react-logo.svg)](https://fr.react.dev)
+
 ## Install
 
 ```bash
