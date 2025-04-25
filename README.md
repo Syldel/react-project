@@ -1,6 +1,8 @@
 # React project
 
-[![React Logo](src/images/react-logo.svg)](https://fr.react.dev)
+<a href="https://fr.react.dev">
+  <img src="src/images/react-logo-light.svg" alt="React Logo" width="120" height="120"/>
+</a>
 
 ## Install
 
